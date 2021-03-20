@@ -4,7 +4,7 @@ import firestore from '@react-native-firebase/firestore';
 
 const tasksCollection = firestore().collection('Tasks');
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   const [input, setInput] = useState('');
   const [list, setList] = useState([]);
 
@@ -47,6 +47,10 @@ const HomeScreen = () => {
 
   return (
     <View style={{flex: 1, justifyContent: 'center'}}>
+      <Button
+        title="Go to Detail"
+        onPress={() => navigation.navigate('Detail')}
+      />
       <Text>To Do List</Text>
       <TextInput
         value={input}
