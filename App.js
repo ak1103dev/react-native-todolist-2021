@@ -23,6 +23,7 @@ import {Provider} from 'react-redux';
 import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
 
 import Couter from './src/components/Counter';
+import Navigation from './src/navigation';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -55,25 +56,14 @@ const App: () => Node = () => {
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    flex: 1,
   };
 
   return (
     <Provider store={store}>
       <SafeAreaView style={backgroundStyle}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={backgroundStyle}>
-          <Header />
-          <View
-            style={{
-              backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            }}>
-            <Section title="Step One">
-              <Couter />
-            </Section>
-          </View>
-        </ScrollView>
+        <Navigation />
       </SafeAreaView>
     </Provider>
   );
