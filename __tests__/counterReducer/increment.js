@@ -1,15 +1,14 @@
-// const {increment} = require('../../src/store/models/counter');
-const store = require('../../src/store');
-const counterReducer = require('../../src/store/models/counter');
+import store from '../../src/store';
+import counterReducer, {increment} from '../../src/store/models/counter';
 
 describe('post reducer', () => {
   it('should return the initial state', () => {
-    expect(counterReducer.default(undefined, {})).toStrictEqual({value: 0});
+    expect(counterReducer(undefined, {})).toStrictEqual({value: 0});
   });
   it('should return 1', () => {
-    const state = store.default.getState().counter;
-    store.default.dispatch(counterReducer.increment());
-    const newState = store.default.getState().counter;
+    const state = store.getState().counter;
+    store.dispatch(increment());
+    const newState = store.getState().counter;
     expect(newState.value).toStrictEqual(state.value + 1);
   });
 });
